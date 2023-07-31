@@ -2,7 +2,7 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
-const url = 'https://restcountries.com/v3.1/all?fields=name,flags';
+const url = 'https://restcountries.com/v3.1/all';
 
 export const fetchCountries = createAsyncThunk('countries/fetchCountries', async (thunkAPI) => {
   try {
