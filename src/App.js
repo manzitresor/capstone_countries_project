@@ -1,24 +1,20 @@
-import logo from './logo.svg';
+/* eslint-disable import/no-extraneous-dependencies */
 import './App.css';
+import { Routes, Route } from 'react-router-dom';
+import Country from './components/Country';
+import Details from './components/Details';
+import Layout from './components/Layout';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<Country />} />
+          <Route path="details" element={<Details />} />
+        </Route>
+      </Routes>
+    </>
   );
 }
 
