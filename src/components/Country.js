@@ -4,18 +4,20 @@ import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
 
 function Country({ country }) {
-  const { name, region, flags } = country;
+  const {
+    name, region, flags,
+  } = country;
   return (
     <>
       <div className="card">
-        <NavLink to={`/details/${name.official}`} className="navLink">
-          <img src={flags.png} alt="country" />
+        <NavLink to={`/details/${name}`} className="navLink" data-testid="navLink">
+          <div className="image">
+            <img src={flags} alt="country" />
+          </div>
           <h1 className="country-heading-one">
-            Country Name:
-            {' '}
-            {name.official}
+            {name}
           </h1>
-          <h4>
+          <h4 className="country-heading-two">
             Region:
             {' '}
             {region}
@@ -30,8 +32,8 @@ export default Country;
 
 Country.propTypes = {
   country: PropTypes.shape({
-    name: PropTypes.shape({ official: PropTypes.string.isRequired }).isRequired,
-    flags: PropTypes.shape({ png: PropTypes.string.isRequired }).isRequired,
+    name: PropTypes.string.isRequired,
+    flags: PropTypes.string.isRequired,
     region: PropTypes.string.isRequired,
   }).isRequired,
 };
