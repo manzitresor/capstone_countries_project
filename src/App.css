@@ -14,7 +14,7 @@
 }
 
 .settings {
-  padding-left: 16rem; 
+  padding-left: 16rem;
   display: flex;
   gap: 25px;
 }
@@ -68,10 +68,11 @@
   padding: 20px;
   background-color: rgb(205, 1, 86);
 }
+
 .card:nth-child(4n+1),
-.card:nth-child(4n+4){
+.card:nth-child(4n+4) {
   background-color: #f11044b8;
-} 
+}
 
 .navLink {
   text-decoration: none;
@@ -80,7 +81,7 @@
 
 .image {
   width: 150px;
-  height:100px;;
+  height: 100px;
   object-position: center;
   object-fit: cover;
 }
