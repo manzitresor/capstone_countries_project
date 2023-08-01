@@ -1,6 +1,7 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
+import { v4 as uuidv4 } from 'uuid';
 
 const url = 'https://restcountries.com/v3.1/all';
 
@@ -29,7 +30,18 @@ const countriesSlice = createSlice({
     });
     builder.addCase(fetchCountries.fulfilled, (state, action) => {
       state.isLoading = false;
-      state.countries = action.payload;
+      const fetchData = action.payload.map((country) => {
+        const items = {};
+        items.id = uuidv4();
+        items.name = country.name.official;
+        items.capital = country.capital;
+        items.region = country.region;
+        items.flags = country.flags.png;
+        items.population = country.population;
+        items.area = country.area;
+        return items;
+      });
+      state.countries = fetchData;
     });
 
     builder.addCase(fetchCountries.rejected, (state, action) => {
