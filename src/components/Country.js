@@ -10,7 +10,7 @@ function Country({ country }) {
   return (
     <>
       <div className="card">
-        <NavLink to={`/details/${name}`} className="navLink">
+        <NavLink to={`/details/${name}`} className="navLink" data-testid="navLink">
           <div className="image">
             <img src={flags} alt="country" />
           </div>
