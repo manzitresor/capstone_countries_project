@@ -23,7 +23,7 @@
 
 # 📖 Countries Webapp <a name="about-project"></a>
 
-This is a web application Tha display Different countries with deferent information.
+This is a web application Tha display Different countries with Different information.
 
 ## 🛠 Built With <a name="built-with"></a>
 
