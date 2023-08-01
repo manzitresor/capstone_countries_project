@@ -1,7 +1,6 @@
-/* eslint-disable import/no-extraneous-dependencies */
 import './App.css';
 import { Routes, Route } from 'react-router-dom';
-import Country from './components/Country';
+import Countries from './components/Countries';
 import Details from './components/Details';
 import Layout from './components/Layout';
 
@@ -10,8 +9,8 @@ function App() {
     <>
       <Routes>
         <Route path="/" element={<Layout />}>
-          <Route index element={<Country />} />
-          <Route path="details" element={<Details />} />
+          <Route index element={<Countries />} />
+          <Route path="/details/:name" element={<Details />} />
         </Route>
       </Routes>
     </>
