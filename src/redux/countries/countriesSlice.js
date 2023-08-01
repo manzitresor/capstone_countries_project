@@ -12,6 +12,7 @@ export const fetchCountries = createAsyncThunk('countries/fetchCountries', async
     return thunkAPI.rejectWithValue('ooops smoething wrent wrong');
   }
 });
+
 const initialState = {
   countries: [],
   isLoading: false,

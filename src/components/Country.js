@@ -1,53 +1,37 @@
-/* eslint-disable react/no-array-index-key */
 /* eslint-disable import/no-extraneous-dependencies */
-import React, { useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { fetchCountries } from '../redux/countries/countriesSlice';
+import React from 'react';
+import PropTypes from 'prop-types';
+import { NavLink } from 'react-router-dom';
 
-function Country() {
-  const { countries, isLoading, error } = useSelector((state) => state.country);
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(fetchCountries());
-  }, [dispatch]);
-  if (isLoading === true) {
-    return (
-      <div>
-        <h1>Looding.....</h1>
-      </div>
-    );
-  }
-  if (error) {
-    return (
-      <div>
-        <h1>{error}</h1>
-      </div>
-    );
-  }
+function Country({ country }) {
+  const { name, region, flags } = country;
   return (
     <>
-      <div>
-        {
-         countries.map((country, index) => (
-           <div key={index}>
-             <img src={country.flags.png} alt="country" />
-             <h1>
-               Country Name:
-               {' '}
-               {country.name.official}
-             </h1>
-             <h4>
-               Capital City:
-               {' '}
-               {country.capital}
-             </h4>
-           </div>
-         ))
-        }
+      <div className="card">
+        <NavLink to={`/details/${name.official}`} className="navLink">
+          <img src={flags.png} alt="country" />
+          <h1 className="country-heading-one">
+            Country Name:
+            {' '}
+            {name.official}
+          </h1>
+          <h4>
+            Region:
+            {' '}
+            {region}
+          </h4>
+        </NavLink>
       </div>
     </>
   );
 }
 
 export default Country;
+
+Country.propTypes = {
+  country: PropTypes.shape({
+    name: PropTypes.shape({ official: PropTypes.string.isRequired }).isRequired,
+    flags: PropTypes.shape({ png: PropTypes.string.isRequired }).isRequired,
+    region: PropTypes.string.isRequired,
+  }).isRequired,
+};
